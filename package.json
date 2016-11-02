@@ -1,0 +1,22 @@
+{
+  "name": "why.js",
+  "version": "1.0.0",
+  "description": "Demystifying the WATs of JavaScript",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thinker3197/Why.js.git"
+  },
+  "keywords": [
+    "wat",
+    "javascript",
+    "arrays",
+    "coercion",
+    "objects"
+  ],
+  "author": "thinker3197",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thinker3197/Why.js/issues"
+  },
+  "homepage": "https://github.com/thinker3197/Why.js"
+}
