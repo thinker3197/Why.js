@@ -9,4 +9,21 @@ JavaScript is not a perfect language, but it's powerful and important. In the pa
 > [] == []
 false
 ```
-On first look, it sounds ridiculos. An empty array is not equal to itself? But this is not what the above statement actually means. Arrays are stored by references in JavaScript and JavaScript double equal operator returns `true` only when you're comparing same instances. So the comparison above actually asks that, "Is an instance of empty array equal to instace of another empty array?", which is defenitely `false`.
+On first look, it sounds ridiculos. An empty array is not equal to itself? But this is not what the above statement actually means. Arrays are stored by references in JavaScript and JavaScript double equal operator returns `true` only when you're comparing same instances. So the comparison above actually asks that, "Is an instance of empty array equal to instace of another empty array?", which is defenitely `false`. The above statement is similar to
+
+```javascript
+> var a = [];
+undefined
+> var b = [];
+undefined
+> a == b
+false
+```
+If the both the array instances have been same, like the one below then answer below would have been `true`.
+
+```javascript
+> var a = b = [];
+undefined
+> a == b
+true
+```
