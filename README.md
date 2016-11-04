@@ -1,10 +1,12 @@
 # Why.js
 
-JavaScript is not a perfect language, but it's powerful and important. As CrockFord says,
-
-> JavaScript is built on some very good ideas and a few very bad ones.
-
-Being the most popular language on the web, it is really certain for newcomers to easily fall in these so called WATs of JavaScript. I've tried to invest some time in explaining why these bad parts of JavaScript behave they way they do.
+JavaScript is not a perfect language, but it's powerful and important. In the past couple of years there have been a lot of infamous talks like [this](https://www.destroyallsoftware.com/talks/wat) & [this](https://www.youtube.com/watch?v=et8xNAc2ic8) that exposed the weird ways in which JavaScript behaves at certain instances. Being the single most popular language on the web right now , it's really common for new developers to fall for it's bizarre behaviour. This repositry aims to highlight those behaviours and demistify _why_ those behaviours occurs.  
 
 # WATs
 
+1. **Equality of empty arrays**
+```javascript
+> [] == []
+false
+```
+On first look, it sounds ridiculos. An empty array is not equal to itself? But this is not what the above statement actually means. Arrays are stored by references in JavaScript and JavaScript double equal operator returns `true` only when you're comparing same instances. So the comparison above actually asks that, "Is an instance of empty array equal to instace of another empty array?", which is defenitely `false`.
