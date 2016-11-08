@@ -45,7 +45,23 @@ Before understanding what is happening above, we need to understand the concept 
 true
 ```
 
-Isn't that supposed to be true, since empty arrays are truthy. That's right but the double equal operator evalutes expression on certain rules. We're trying to compare an object with a boolean value and JavaScript will implicitly convert the operands to *Number* type. `Number([])` is `0` and `Number(false)` is also `0`, which evaluates to `true` since zero is equal to zero.
+Isn't that supposed to be false, since empty arrays are truthy? That's right but the double equal operator evalutes expression on certain rules. We're trying to compare an object with a boolean value and JavaScript will implicitly convert the operands to *Number* type. `Number([])` is `0` and `Number(false)` is also `0`, which evaluates to `true` since zero is equal to zero.
+
+3. **Empty array plus empty array**
+
+```javascript
+> [] + []
+""
+```
+
+It might look like the sum of two arrays will concatinate them and hence on adding two empty arrays one might get another empty array. But that's not the case in JavaScript. As stated in the ECMA language specification - The addition operator either performs string concatenation or numeric addition. Hence, the `+` is not defined for arrays and JavaScript will implicitly convert arrays into their _string_ eqvuilent and concatinate them. The above expression will become similar to 
+
+```javascript
+> [].toString() + [].toString()
+""
+```
+
+Concatination of two empty strings yeilds another empty string and hence the above statement is valid.
 
 # Glossary
 
