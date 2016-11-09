@@ -1,6 +1,6 @@
 # Why.js
 
-JavaScript is not a perfect language, but it's powerful and important. In the past couple of years there have been a lot of infamous talks like [this](https://www.destroyallsoftware.com/talks/wat) & [this](https://www.youtube.com/watch?v=et8xNAc2ic8) that exposed the weird ways in which JavaScript behaves at certain instances. Being the single most popular language on the web right now , it's really common for new developers to fall for it's bizarre behaviour. This repositry aims to highlight those behaviours and demystify _why_ these behaviours occur.  
+JavaScript is not a perfect language, but it's powerful and important. In the past couple of years there have been a lot of infamous talks like [this](https://www.destroyallsoftware.com/talks/wat) & [this](https://www.youtube.com/watch?v=et8xNAc2ic8) that exposed the weird ways in which JavaScript behaves at certain instances. Being the single most popular language on the web right now , it's really common for new developers to fall for it's bizarre behaviour. This repositry aims to highlight those behaviours and demystify _why_ these behaviours occur.
 # Preface
 
 Many of these WATs occur in JavaScript due to properties such as type coercion and evaluation methodology of `==` & `===` operator. JavaScript is a weekly typed language. This means that varibales can automatically be changed from one type to another while evaluating an expression. Although, this is a very powerful feature of the language it might give rise to some unconventional situtaions.
@@ -31,7 +31,7 @@ undefined
 true
 ```
 
-2. **Equlaity of empty array and `NOT` empty array**      
+2. **Equlaity of empty array and `NOT` empty array**
 ```javascript
 > [] == ![]
 true
@@ -54,7 +54,7 @@ Isn't that supposed to be false, since empty arrays are truthy? That's right but
 ""
 ```
 
-It might look like the sum of two arrays will concatinate them and hence on adding two empty arrays one might get another empty array. But that's not the case in JavaScript. As stated in the ECMA language specification - The addition operator either performs string concatenation or numeric addition. Hence, the `+` is not defined for arrays and JavaScript will implicitly convert arrays into their _string_ eqvuilent and concatinate them. The above expression will become similar to 
+It might look like the sum of two arrays will concatinate them and hence on adding two empty arrays one might get another empty array. But that's not the case in JavaScript. As stated in the ECMA language specification - The addition operator either performs string concatenation or numeric addition. Hence, the `+` is not defined for arrays and JavaScript will implicitly convert arrays into their _string_ eqvuilent and concatinate them. The above expression will become similar to
 
 ```javascript
 > [].toString() + [].toString()
@@ -62,6 +62,22 @@ It might look like the sum of two arrays will concatinate them and hence on addi
 ```
 
 Concatination of two empty strings yeilds another empty string and hence the above statement is valid.
+
+4. **Empty array minus empty array**
+
+```javascript
+> [] - []
+0
+```
+
+This case is similar to the previous one. The `-` operator is not defined for arrays or _strings_. Hence JavaScript will implicitly convert the arrays into their corresponding _number_ type. Coercion of empty array into _number_ type yeilds `0`. The above expression is same as
+
+```javascript
+> Number([]) - Number([])
+0
+```
+
+Zero minus zero is obviously zero, which makes sense.
 
 # Glossary
 
