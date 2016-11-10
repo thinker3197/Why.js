@@ -1,13 +1,15 @@
 # Why.js
 
 JavaScript is not a perfect language, but it's powerful and important. In the past couple of years there have been a lot of infamous talks like [this](https://www.destroyallsoftware.com/talks/wat) & [this](https://www.youtube.com/watch?v=et8xNAc2ic8) that exposed the weird ways in which JavaScript behaves at certain instances. Being the single most popular language on the web right now , it's really common for new developers to fall for it's bizarre behaviour. This repositry aims to highlight those behaviours and demystify _why_ these behaviours occur.
+
 # Preface
 
-Many of these WATs occur in JavaScript due to properties such as type coercion and evaluation methodology of `==` & `===` operator. JavaScript is a weekly typed language. This means that varibales can automatically be changed from one type to another while evaluating an expression. Although, this is a very powerful feature of the language it might give rise to some unconventional situtaions.
+Many of these WATs occur in JavaScript due to properties such as type coercion and evaluation methodology of `==` & `===` operator. JavaScript is a weekly typed language. This means that varibales can automatically be changed from one type to another while evaluating an expression. Although this is a very powerful feature of the language, it might give rise to some unconventional situtaions.
 
 # WATs
 
-1. **Equality of empty arrays**
+1[](). **Equality of empty arrays**
+
 ```javascript
 > [] == []
 false
@@ -31,7 +33,8 @@ undefined
 true
 ```
 
-2. **Equlaity of empty array and `NOT` empty array**
+2[](). **Equlaity of empty array and `NOT` empty array**
+
 ```javascript
 > [] == ![]
 true
@@ -47,7 +50,7 @@ true
 
 Isn't that supposed to be false, since empty arrays are truthy? That's right but the double equal operator evalutes expression on certain rules. We're trying to compare an object with a boolean value and JavaScript will implicitly convert the operands to *Number* type. `Number([])` is `0` and `Number(false)` is also `0`, which evaluates to `true` since zero is equal to zero.
 
-3. **Empty array plus empty array**
+3[](). **Empty array plus empty array**
 
 ```javascript
 > [] + []
@@ -63,7 +66,7 @@ It might look like the sum of two arrays will concatinate them and hence on addi
 
 Concatination of two empty strings yeilds another empty string and hence the above statement is valid.
 
-4. **Empty array minus empty array**
+4[](). **Empty array minus empty array**
 
 ```javascript
 > [] - []
