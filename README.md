@@ -14,6 +14,7 @@ Many of these WATs occur in JavaScript due to properties such as type coercion a
 > [] == []
 false
 ```
+
 On first look, it sounds ridiculous. An empty array is not equal to itself? But this is not what the above statement actually means. Arrays are stored by references in JavaScript and JavaScript double equal operator returns `true` only when you're comparing same instances of same type. The comparison above actually asks that, "Is an instance of empty array equal to instace of another empty array?", which is defenitely `false`. The above statement is similar to
 
 ```javascript
@@ -24,6 +25,7 @@ undefined
 > a == b
 false
 ```
+
 `a` and `b` are references to two different locations in memory, hence the result is false. However, if the both the array instances have been same, like the one below then answer below would have been `true`.
 
 ```javascript
@@ -81,6 +83,61 @@ This case is similar to the previous one. The `-` operator is not defined for ar
 ```
 
 Zero minus zero is obviously zero, which makes sense.
+
+5[](). **Weird array equal weird string**
+
+```javascript
+> [null, undefined, []] == ",,"
+true
+```
+
+This is quite weird. When we try to compare an non-empty array with a _string_, Jaascript coerces each array element into string and then joins them by commas. Stringification of `null`, `undefined` & `[]` gives an empty string. Hence the expression `[null, undefined, []].toString()` yeilds `",,"`. 
+
+6[](). **Plus empty array**
+
+```javascript
+> + []
+0
+```
+
+That's actually not WAT. In Javascript and unary plus operator is used to expicitly convert the object into _number_ type. So the above statement is similar to
+
+```javascript
+> Number([])
+0
+```
+
+7[](). **Empty array plus empty object**
+
+```javascript
+> [] + {} 
+"[object Object]"
+```
+
+You might have guessed this one. As seen in 3, JavaScript will coerce the array and the object into _string_ and then concatenate them. The default conversion for object type to _string_ is `[object type]`, where `type` is the type of object. There are different type of objects in JavaScript like `Object`, `Function`, `Array`, `RegExp` etc. In this case it's `Object`. 
+
+```javascript
+> "" + "[object Object]"
+"[object Object]"
+```
+
+8[](). Empty Object plus empty array
+
+```javascript
+> {} + []
+0
+```
+ 
+ Wait! Didn't we just said that JavaScript coerces object and array to _string_ on plus operator? This is actally a bizzare edge case of javascript. The JavaScript compiler understands this statement a bit diffrently. It considers `{}` as an empty code block and `+ []` as another statement. We saw `+ []` equates to `0` which is why the above expression evaluates to `0`. 
+
+9[](). **Empty object plus empty object**
+
+```javascript
+> {} + {}
+NaN
+```
+
+This one is similar to the example above. Explicit conversion of an empty object into _number_ type yeilds `NaN`.
 
 # Glossary
 
