@@ -4,7 +4,7 @@ JavaScript is not a perfect language, but it's powerful and important. In the pa
 
 # Preface
 
-Many of these WATs occur in JavaScript due to properties such as type coercion and evaluation methodology of `==` & `===` operator. JavaScript is a weekly typed language. This means that varibales can automatically be changed from one type to another while evaluating an expression. Although this is a very powerful feature of the language, it might give rise to some unconventional situtaions.
+Many of these WATs occur in JavaScript due to properties such as type coercion and evaluation methodology of `==` & `===` operator. The `==` and `===` operators evaluate an expression using the abstract equality comparsion algorithms and the strict equality comparison algorithm. JavaScript is a weekly typed language. This means that varibales can automatically be changed from one type to another while evaluating an expression. Although this is a very powerful feature of the language, it might give rise to some unconventional situtaions.
 
 # WATs
 
@@ -14,7 +14,6 @@ Many of these WATs occur in JavaScript due to properties such as type coercion a
 > [] == []
 false
 ```
-
 On first look, it sounds ridiculous. An empty array is not equal to itself? But this is not what the above statement actually means. Arrays are stored by references in JavaScript and JavaScript double equal operator returns `true` only when you're comparing same instances of same type. The comparison above actually asks that, "Is an instance of empty array equal to instace of another empty array?", which is defenitely `false`. The above statement is similar to
 
 ```javascript
@@ -25,7 +24,6 @@ undefined
 > a == b
 false
 ```
-
 `a` and `b` are references to two different locations in memory, hence the result is false. However, if the both the array instances have been same, like the one below then answer below would have been `true`.
 
 ```javascript
@@ -137,7 +135,30 @@ You might have guessed this one. As seen in 3, JavaScript will coerce the array 
 NaN
 ```
 
-This one is similar to the example above. Explicit conversion of an empty object into _number_ type yeilds `NaN`.
+This one is similar to the example above. Explicit conversion of an empty object into _number_ type yeilds `NaN`. 
+
+10[](). The **_null_ and zero**
+
+```javascript
+> 0 < null
+false
+> 0 >= null 
+true
+> 0 == null 
+false
+```
+
+Well, that's frustrating. JavaScript double equal operator and the relational operator are based on the abstract equality comparison algorithm and the abstract relational comparison algorithm. It's just a fancy set of rules to evaluate an expression. 
+When we compare `0` and `null` using relational operators, JavaScript coerces `null` into it's primitive _number_ type. When using relational operators the comparison is similar to
+
+```javascript
+> 0 < Number(null)
+false
+> 0 >= Number(null)
+true
+```
+
+`null` when converted to _number_ type yeilds `0` which explains evaluation of the above statements. However with the `==` opeartor, such a comparison dosen't fall into any category of rules defined for evaluation of expression by `==` operator. Neither `0` nor `null` gets coerced and by rule if such a case occurs where the comparison dosen't fall into any category, `false` is returned.
 
 # Glossary
 
