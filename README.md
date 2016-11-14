@@ -119,7 +119,7 @@ You might have guessed this one. As seen in 3, JavaScript will coerce the array 
 "[object Object]"
 ```
 
-8[](). Empty Object plus empty array
+8[](). **Empty object plus empty array**
 
 ```javascript
 > {} + []
