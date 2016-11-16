@@ -89,7 +89,7 @@ Zero minus zero is obviously zero, which makes sense.
 true
 ```
 
-This is quite weird. When we try to compare an non-empty array with a _string_, Jaascript coerces each array element into string and then joins them by commas. Stringification of `null`, `undefined` & `[]` gives an empty string. Hence the expression `[null, undefined, []].toString()` yeilds `",,"`. 
+This is quite weird. When we try to compare an non-empty array with a _string_, Javascript coerces each array element into string and then joins them by commas. Stringification of `null`, `undefined` & `[]` gives an empty string. Hence the expression `[null, undefined, []].toString()` yeilds `",,"`. 
 
 6[](). **Plus empty array**
 
