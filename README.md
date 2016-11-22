@@ -137,7 +137,7 @@ NaN
 
 This one is similar to the example above. Explicit conversion of an empty object into _number_ type yeilds `NaN`. 
 
-10[](). The **_null_ and zero**
+10[](). **The _null_ and zero**
 
 ```javascript
 > 0 < null
