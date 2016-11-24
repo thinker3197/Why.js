@@ -160,6 +160,30 @@ true
 
 `null` when converted to _number_ type yeilds `0` which explains evaluation of the above statements. However with the `==` opeartor, such a comparison dosen't fall into any category of rules defined for evaluation of expression by `==` operator. Neither `0` nor `null` gets coerced and by rule if such a case occurs where the comparison dosen't fall into any category, `false` is returned.
 
+11[](). **Math.min is greater than Math.max**
+
+```javascript
+> Math.min() > Math.max()
+true
+```
+
+A lot of programming languages define global maximum and minimum values and so does JavaScript, but not with `Math.max()` or `Math.min()`. They are instead used to return maximum and minimum values within a group of numbers. 
+When these functions are called without arguments, `Math.max()` returns `Infinity` and `Math.max()` returns `-Infinity`.
+
+```javascript
+> Math.min(1, 2, 3, 4)
+1
+> Math.max(1, 2, 3, 4)
+4
+```
+
+JavaScript employes `Number.MAX_VALUE` and `Number.MIN_VALUE` for this task and they work as expected. 
+
+```javascript
+> Number.MIN_VALUE < Number.MAX_VALUE
+true
+```
+
 # Glossary
 
 * **coercion** - *Also type-conversion* Type conversion (or typecasting) means transfer of data from one data type to another.
