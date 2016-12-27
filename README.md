@@ -40,8 +40,8 @@ true
 true
 ```
 
-Before understanding what is happening above, we need to understand the concept of *truthy* and *falsy* in JavaScript and how the `!` (logical NOT) operator works. Values such as `false`, `null`, `undefined`, `NaN`, `0`, `''` and `""` are considered as falsy. Other values like `true`, `{}`, `[]`, `"foo"` etc. are considered truthy. The `!` operator on the other hand is defined for *boolean* values only. So in the above context JavaScript automatically do the type coercion of the empty array and converts it into it's coresponding boolean value i.e. `true`.
-`![]` evalutaes to `false` and the conversion now actually becomes
+Before understanding what is happening above, we need to understand the concept of *truthy* and *falsy* in JavaScript and how the `!` (logical NOT) operator works. Values such as `false`, `null`, `undefined`, `NaN`, `0`, `''` and `""` are considered as falsy. Other values like `true`, `{}`, `[]`, `"foo"` etc. are considered truthy. The `!` operator on the other hand is defined for *boolean* values only. Any other data type will automatically be coerced into it's coresponding boolean value when operated with `!` operator.
+Here, `![]` evalutaes to `false` and the comparison actually becomes
 
 ```javascript
 > [] == false
